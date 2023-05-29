@@ -11,7 +11,7 @@ pipeline {
         stage('DockerHub Push'){
             steps{
                 echo " ============== DockerHub Push start =================="
-                sh "docker login -u pikachugh -p dragon11198745"
+                sh "docker login -u pikachugh -p dckr_pat_Bpq2nWp7hU9jtJGGAAjL5WvZbXk"
                 sh "docker push pikachugh/pr4:latest"
                 echo " ============== DockerHub Push stop ==================="
             }
