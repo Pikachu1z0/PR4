@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+    stages {
+        stage("Build Docker Images") {
+            steps {
+                echo " ============== docker build start ==================="
+                sh "docker build -t pikachugh/pr4 ."
+                echo " ============== docker build stop ==================="
+                }
+            }
+        stage('DockerHub Push'){
+            steps{
+                echo " ============== DockerHub Push start =================="
+                sh "docker login -u pikachugh -p dragon11198745"
+                sh "docker push pikachugh/pr4:latest"
+                echo " ============== DockerHub Push stop ==================="
+            }
+        }
+        stage('k8s build'){
+            steps{
+            		withCredentials([file(credentialsId: 'mykubeconfig', variable: 'KUBECONFIG')]) {
+                		echo " ============== k8s build start ==================="
+                		sh "kubectl apply -f ."
+                		echo " ============== k8s build stop =================="
+                	} 	
+            }
+        }
+   }
+}

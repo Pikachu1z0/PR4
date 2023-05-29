@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yaml
+    kompose.version: 1.28.0 (c4137012e)
+  creationTimestamp: null
+  labels:
+    io.kompose.network/pr4-ffff: "true"
+    io.kompose.service: db
+  name: db
+spec:
+  containers:
+    - env:
+        - name: MYSQL_DATABASE
+          value: finance
+        - name: MYSQL_ROOT_PASSWORD
+          value: p@ssw0rd1
+      image: mysql
+      name: test-db
+      ports:
+        - containerPort: 3306
+      resources: {}
+  restartPolicy: OnFailure
+status: {}

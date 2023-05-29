@@ -2,8 +2,9 @@ version: '3.8'
 
 services:
  web:
-  build: ./web
-  command: python3 test.py
+  image: pikachugh/pr4:latest 
+  #build: ./web
+  #command: python3 test.py
   volumes:
   - .:/PR 
   depends_on:
