@@ -4,7 +4,7 @@ import mysql.connector
 bot = telebot.TeleBot("5869928689:AAE7mj2ndceNda_O_eWWfxX0rX0xUpdM0Xo")
 
 db = mysql.connector.connect( 
-   host='test_db',
+   host='10.244.0.14',
    user="root",
    password="p@ssw0rd1",
    database="finance", 
